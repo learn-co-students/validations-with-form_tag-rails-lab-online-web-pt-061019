@@ -15,5 +15,21 @@
     <%= text_field_tag "phone_number" %>
   </div>
 
+	<% if @author.errors.any? %>
+	  <div id="error_explanation">
+	    <h2>
+	      <%= pluralize(@author.errors.count, "error") %>
+	      prohibited this author from being saved:
+	    </h2>
+	 
+	    <ul>
+	    <% @author.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+
   <%= submit_tag "Create" %>
 <% end %>
